@@ -19,12 +19,13 @@ jobs:
     needs: checkout
     defaults:
       run:
-        working-directory: .
+        working-directory: devcalc-api
     steps:
       - uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
+      - run: ls -la
       - run: mvn clean install
 
   test:
@@ -32,7 +33,7 @@ jobs:
     needs: build
     defaults:
       run:
-        working-directory: .
+        working-directory: devcalc-api
     steps:
       - run: mvn test
 
@@ -41,7 +42,7 @@ jobs:
     needs: test
     defaults:
       run:
-        working-directory: .
+        working-directory: devcalc-api
     steps:
       - run: mvn package
 
@@ -49,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: .
+        working-directory: devcalc-api
     needs: [package]
     steps:
       - run: echo "Deploy realizado com sucesso"

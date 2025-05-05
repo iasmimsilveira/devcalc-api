@@ -5,6 +5,7 @@ import io.javalin.Javalin;
 public class App {
     public static void main(String[] args) {
         CalculatorService service = new CalculatorService();
+        System.out.println("DevCalc API iniciando na porta 7000...");
         Javalin app = Javalin.create().start(7000);
 
         app.get("/add", ctx -> {

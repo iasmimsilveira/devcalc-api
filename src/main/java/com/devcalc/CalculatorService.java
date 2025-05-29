@@ -1,52 +1,49 @@
 package com.devcalc;
 
 /**
- * Serviço de operações básicas da calculadora.
+ * Serviço de operações matemáticas básicas.
+ * Esta classe não foi projetada para extensão.
  */
 public final class CalculatorService {
 
     /**
-     * Soma dois números.
-     * @param a primeiro número
-     * @param b segundo número
+     * Soma dois valores.
+     * @param a primeiro valor
+     * @param b segundo valor
      * @return resultado da soma
      */
-    public double add(final double a, final double b)
-    {
+    public double add(final double a, final double b) {
         return a + b;
     }
 
     /**
-     * Subtrai dois números.
-     * @param a minuendo
-     * @param b subtraendo
+     * Subtrai dois valores.
+     * @param a primeiro valor
+     * @param b segundo valor
      * @return resultado da subtração
      */
-    public double subtract(final double a, final double b)
-    {
+    public double subtract(final double a, final double b) {
         return a - b;
     }
 
     /**
-     * Multiplica dois números.
-     * @param a primeiro fator
-     * @param b segundo fator
-     * @return produto
+     * Multiplica dois valores.
+     * @param a primeiro valor
+     * @param b segundo valor
+     * @return resultado da multiplicação
      */
-    public double multiply(final double a, final double b)
-    {
+    public double multiply(final double a, final double b) {
         return a * b;
     }
 
     /**
-     * Divide dois números.
+     * Divide dois valores.
      * @param a dividendo
      * @param b divisor
      * @return resultado da divisão
-     * @throws ArithmeticException se divisor for zero
+     * @throws ArithmeticException se b == 0
      */
-    public double divide(final double a, final double b)
-    {
+    public double divide(final double a, final double b) {
         if (b == 0) {
             throw new ArithmeticException("Divisão por zero");
         }

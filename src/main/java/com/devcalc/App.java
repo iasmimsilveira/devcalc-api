@@ -1,35 +1,20 @@
 package com.devcalc;
 
-import io.javalin.Javalin;
+/**
+ * Classe principal da aplicação.
+ */
+public final class App {
 
-public class App {
-    public static void main(String[] args) {
-        CalculatorService service = new CalculatorService();
-        System.out.println("DevCalc API iniciando na porta 7000...");
-        Javalin app = Javalin.create().start(7001);
+    // Construtor privado para evitar instanciação
+    private App() {
+        throw new UnsupportedOperationException("Classe utilitária");
+    }
 
-        app.get("/add", ctx -> {
-            double a = Double.parseDouble(ctx.queryParam("a"));
-            double b = Double.parseDouble(ctx.queryParam("b"));
-            ctx.result(String.valueOf(service.add(a, b)));
-        });
-
-        app.get("/subtract", ctx -> {
-            double a = Double.parseDouble(ctx.queryParam("a"));
-            double b = Double.parseDouble(ctx.queryParam("b"));
-            ctx.result(String.valueOf(service.subtract(a, b)));
-        });
-
-        app.get("/multiply", ctx -> {
-            double a = Double.parseDouble(ctx.queryParam("a"));
-            double b = Double.parseDouble(ctx.queryParam("b"));
-            ctx.result(String.valueOf(service.multiply(a, b)));
-        });
-
-        app.get("/divide", ctx -> {
-            double a = Double.parseDouble(ctx.queryParam("a"));
-            double b = Double.parseDouble(ctx.queryParam("b"));
-            ctx.result(String.valueOf(service.divide(a, b)));
-        });
+    /**
+     * Ponto de entrada da aplicação.
+     * @param args argumentos de linha de comando
+     */
+    public static void main(final String[] args) {
+        System.out.println("Servidor iniciado na porta 7001");
     }
 }

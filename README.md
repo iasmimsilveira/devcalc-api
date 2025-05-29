@@ -1,3 +1,6 @@
+
+![CI Pipeline](https://github.com/iasmimsilveira/devcalc-api/actions/workflows/ci.yml/badge.svg)
+
 # DevCalc API
 
 API REST simples para operações matemáticas básicas.

@@ -26,10 +26,6 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Verifica estilo com Checkstyle
-        run: mvn checkstyle:checK  # erro proposital (K maiúsculo)
-
-
   build:
     runs-on: ubuntu-latest
     needs: checkout

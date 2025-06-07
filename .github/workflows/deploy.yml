@@ -1,0 +1,27 @@
+
+name: Deploy por Ambiente
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Mostrar Ambiente e Branch
+        run: |
+          echo "Ambiente: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}"
+          echo "Branch: ${{ github.ref }}"
+
+      - name: Simular Deploy
+        run: |
+          echo "Realizando deploy no ambiente ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}..."

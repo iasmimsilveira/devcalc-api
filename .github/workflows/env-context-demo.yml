@@ -1,0 +1,25 @@
+name: TP3 - Etapa 3: Contextos e Escopos de Variáveis
+
+on:
+  workflow_dispatch:
+
+env:
+  STAGE: workflow-level
+  CUSTOM_VAR: defined-at-workflow
+
+jobs:
+  context-demo:
+    runs-on: self-hosted
+    env:
+      STAGE: job-level
+      CUSTOM_VAR: defined-at-job
+    steps:
+      - name: Contextos e variáveis de ambiente
+        env:
+          STAGE: step-level
+          CUSTOM_VAR: defined-at-step
+        run: |
+          echo "Usuário que acionou o workflow: ${{ github.actor }}"
+          echo "Sistema operacional do runner: ${{ runner.os }}"
+          echo "Variável STAGE (nível step): $STAGE"
+          echo "Variável CUSTOM_VAR (nível step): $CUSTOM_VAR"

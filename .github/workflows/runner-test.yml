@@ -1,0 +1,18 @@
+# .github/workflows/runner-test.yml
+name: Runner Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-runner:
+    runs-on: self-hosted
+    steps:
+      - name: Exibe sistema
+        run: uname -a
+      - name: Mostra versão do Java
+        run: java -version
+      - name: Instala um software simples (curl já vem, mas só exemplo)
+        run: brew install cowsay || echo "Já instalado"
+      - name: Usa o cowsay
+        run: cowsay "Runner Funcionando!"

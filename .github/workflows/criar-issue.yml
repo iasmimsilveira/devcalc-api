@@ -1,0 +1,28 @@
+name: Criar Issue com GITHUB_TOKEN
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  abrir_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar variável obrigatória
+        id: checar
+        run: |
+          if [ -z "${{ secrets.PROD_TOKEN }}" ]; then
+            echo "variavel_ausente=true" >> $GITHUB_ENV
+          else
+            echo "variavel_ausente=false" >> $GITHUB_ENV
+          fi
+
+      - name: Criar issue se variável estiver ausente
+        if: env.variavel_ausente == 'true'
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: "🚨 Variável PROD_TOKEN ausente"
+          content-filepath: .github/issue-content.md
+          labels: bug, infraestrutura
